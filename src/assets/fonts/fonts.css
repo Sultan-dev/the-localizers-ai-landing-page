@@ -1,0 +1,17 @@
+/* HSN Sara Font */
+@font-face {
+  font-family: 'HSN Sara';
+  src: url('/fonts/HSN-Sara-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HSN Sara';
+  src: url('/fonts/HSN-Sara-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+

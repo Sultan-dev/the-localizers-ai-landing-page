@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HSN Sara Font */
+@font-face {
+  font-family: "HSN Sara";
+  src: url("./assets/fonts/HSN-Sara-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HSN Sara";
+  src: url("./assets/fonts/HSN-Sara-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Primary brand color - Green #018755 converted to HSL */
+    --primary: 155 99% 26%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Background - Mint green #EBFBF5 */
+    --background: 156 68% 95%;
+    --background-color: #ebfbf5;
+    --foreground: 155 99% 15%;
+
+    /* Card styling */
+    --card: 0 0% 100%;
+    --card-foreground: 155 99% 15%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 155 99% 15%;
+
+    /* Secondary - lighter green */
+    --secondary: 155 99% 26%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted */
+    --muted: 156 40% 90%;
+    --muted-foreground: 155 30% 40%;
+
+    /* Accent - Badge background #0187554D (30% opacity) */
+    --accent: 155 99% 26%;
+    --accent-foreground: 155 99% 20%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders and inputs */
+    --border: 155 30% 85%;
+    --input: 155 30% 85%;
+    --ring: 155 99% 26%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 155 99% 26%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 156 68% 95%;
+    --sidebar-accent-foreground: 155 99% 20%;
+    --sidebar-border: 155 30% 85%;
+    --sidebar-ring: 155 99% 26%;
+
+    /* Custom gradients */
+    --gradient-hero: linear-gradient(
+      180deg,
+      #ebfbf5 31.73%,
+      rgba(235, 251, 245, 0) 67.31%
+    );
+    --gradient-card: linear-gradient(
+      360deg,
+      #018755 34.02%,
+      rgba(1, 135, 85, 0) 84.43%
+    );
+    --badge-bg: hsla(155, 99%, 26%, 0.3);
+    --gradient-background: linear-gradient(
+      180deg,
+      #000000 0%,
+      #0a0a0a 15%,
+      #1a1a1a 30%,
+      #2d2d2d 45%,
+      #4a4a4a 60%,
+      #6b6b6b 75%,
+      #8a8a8a 85%,
+      #a8a8a8 92%,
+      #c4c4c4 96%,
+      #ebfbf5 100%
+    );
+  }
+
+  .dark {
+    --primary: 155 99% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --background: 155 30% 8%;
+    --foreground: 156 68% 95%;
+
+    --card: 155 30% 12%;
+    --card-foreground: 156 68% 95%;
+
+    --popover: 155 30% 12%;
+    --popover-foreground: 156 68% 95%;
+
+    --secondary: 155 50% 20%;
+    --secondary-foreground: 156 68% 95%;
+
+    --muted: 155 30% 15%;
+    --muted-foreground: 155 20% 65%;
+
+    --accent: 155 50% 20%;
+    --accent-foreground: 156 68% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 155 30% 20%;
+    --input: 155 30% 20%;
+    --ring: 155 99% 40%;
+
+    --sidebar-background: 155 30% 8%;
+    --sidebar-foreground: 156 68% 95%;
+    --sidebar-primary: 155 99% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 155 30% 15%;
+    --sidebar-accent-foreground: 156 68% 95%;
+    --sidebar-border: 155 30% 20%;
+    --sidebar-ring: 155 99% 40%;
+
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(155 30% 8%) 31.73%,
+      transparent 67.31%
+    );
+    --gradient-card: linear-gradient(
+      360deg,
+      hsl(155 99% 30%) 34.02%,
+      transparent 84.43%
+    );
+    --badge-bg: hsla(155, 99%, 40%, 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: "HSN Sara", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .badge-bg {
+    background: var(--badge-bg);
+  }
+
+  .gradient-background {
+    background: var(--gradient-background);
+  }
+
+  .blur-element {
+    width: 476px;
+    height: 476px;
+    position: absolute;
+    top: 392px;
+    left: 478px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 100px rgba(1, 135, 85, 0.3), 0 0 200px rgba(1, 135, 85, 0.2),
+      0 0 300px rgba(1, 135, 85, 0.15), 0 0 400px rgba(1, 135, 85, 0.1);
+    filter: blur(224px);
+    opacity: 1;
+  }
+}
