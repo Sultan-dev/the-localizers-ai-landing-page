@@ -1,8 +1,14 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,8 +24,8 @@ export default {
         display: ["'HSN Sara'", "system-ui", "sans-serif"],
       },
       fontSize: {
-        'hero': ['48px', { lineHeight: '1.17', fontWeight: '700' }],
-        'card-title': ['20px', { lineHeight: '0.91', fontWeight: '700' }],
+        hero: ["48px", { lineHeight: "1.17", fontWeight: "700" }],
+        "card-title": ["20px", { lineHeight: "0.91", fontWeight: "700" }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -92,5 +98,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
