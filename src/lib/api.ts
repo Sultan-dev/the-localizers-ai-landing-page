@@ -33,7 +33,6 @@ const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     ...options,
     headers: options.headers,
-    credentials: "include",
   });
 
   if (!response.ok) {
