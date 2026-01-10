@@ -1,9 +1,11 @@
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const FilterTabs = () => {
-  const [activeFilter, setActiveFilter] = useState("الكل");
+interface FilterTabsProps {
+  activeFilter: string;
+  onFilterChange: (filter: string) => void;
+}
 
+const FilterTabs = ({ activeFilter, onFilterChange }: FilterTabsProps) => {
   const filters = [
     { id: "الكل", label: "الكل" },
     { id: "جهة حكومية", label: "جهة حكومية" },
@@ -21,7 +23,7 @@ const FilterTabs = () => {
             {filters.map((filter) => (
               <button
                 key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
+                onClick={() => onFilterChange(filter.id)}
                 className={cn(
                   "px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap",
                   activeFilter === filter.id
