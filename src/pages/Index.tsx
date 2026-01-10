@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FilterTabs from "@/components/FilterTabs";
@@ -6,6 +7,8 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const [activeFilter, setActiveFilter] = useState("الكل");
+
   return (
     <div className="min-h-screen bg-[#EBFBF5] relative">
       {/* Background Circle - Fixed behind everything */}
@@ -23,8 +26,11 @@ const Index = () => {
       <Navbar />
       <main className="relative z-10">
         <Hero />
-        <FilterTabs />
-        <CardGrid />
+        <FilterTabs
+          activeFilter={activeFilter}
+          onFilterChange={setActiveFilter}
+        />
+        <CardGrid activeFilter={activeFilter} />
         <ContactForm />
       </main>
       <div className="relative z-10">
