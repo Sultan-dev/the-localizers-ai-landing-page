@@ -1,15 +1,13 @@
 import { cn } from "@/lib/utils";
+import { useFilter } from "@/contexts/FilterContext";
 
-interface FilterTabsProps {
-  activeFilter: string;
-  onFilterChange: (filter: string) => void;
-}
+const FilterTabs = () => {
+  const { selectedType, setSelectedType } = useFilter();
 
-const FilterTabs = ({ activeFilter, onFilterChange }: FilterTabsProps) => {
   const filters = [
-    { id: "الكل", label: "الكل" },
-    { id: "جهة حكومية", label: "جهة حكومية" },
-    { id: "شركة مملوكة للدولة", label: "شركة مملوكة للدولة" },
+    { id: "الكل", label: "شركة مملوكة للدولة + جهة حكومية", value: "الكل" },
+    { id: "جهة حكومية", label: "جهة حكومية", value: "government" },
+    { id: "شركة مملوكة للدولة", label: "شركة مملوكة للدولة", value: "company" },
   ];
 
   return (
@@ -23,10 +21,10 @@ const FilterTabs = ({ activeFilter, onFilterChange }: FilterTabsProps) => {
             {filters.map((filter) => (
               <button
                 key={filter.id}
-                onClick={() => onFilterChange(filter.id)}
+                onClick={() => setSelectedType(filter.value)}
                 className={cn(
                   "px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap",
-                  activeFilter === filter.id
+                  selectedType === filter.value
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "bg-transparent text-gray-700 hover:bg-gray-100"
                 )}

@@ -3,8 +3,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactForm = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     fullName: "",
     organizationName: "",
@@ -22,10 +24,66 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+
+    try {
+      // استخدام FormSubmit لإرسال الإيميل مباشرة
+      const form = e.target as HTMLFormElement;
+      const formDataToSend = new FormData(form);
+      formDataToSend.append("_to", "AI@TheLocalizers.com");
+      formDataToSend.append("_subject", `رسالة تواصل من ${formData.fullName}`);
+      formDataToSend.append("_template", "table");
+
+      // إرسال البيانات مباشرة إلى FormSubmit
+      const response = await fetch(
+        "https://formsubmit.co/ajax/AI@TheLocalizers.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.fullName,
+            organization: formData.organizationName,
+            email: formData.email,
+            phone: formData.phone,
+            message: formData.message,
+            _subject: `رسالة تواصل من ${formData.fullName}`,
+            _template: "table",
+          }),
+        }
+      );
+
+      if (response.ok) {
+        // نجاح الإرسال
+        toast({
+          title: "تم الإرسال بنجاح",
+          description:
+            "شكراً لك! تم إرسال رسالتك بنجاح وسنقوم بالرد عليك قريباً.",
+          variant: "default",
+        });
+
+        // إعادة تعيين النموذج
+        setFormData({
+          fullName: "",
+          organizationName: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        throw new Error("فشل الإرسال");
+      }
+    } catch (error) {
+      // خطأ في الإرسال
+      toast({
+        title: "حدث خطأ",
+        description: "عذراً، لم يتم إرسال الرسالة. يرجى المحاولة مرة أخرى.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
