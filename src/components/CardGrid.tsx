@@ -77,8 +77,8 @@ const CardGrid = () => {
                   subtitle={card.subtitle}
                   description={card.description || ""}
                   badge={card.badge || ""}
-                  previewUrl={card.preview_url}
-                  link={card.link}
+                  previewUrl={card.preview_url ?? undefined}
+                  link={card.link ?? undefined}
                   isComingSoon={card.is_coming_soon}
                   type={card.type}
                   mechanisms={card.mechanisms}
