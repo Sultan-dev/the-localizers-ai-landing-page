@@ -5,9 +5,9 @@ const FilterTabs = () => {
   const { selectedType, setSelectedType } = useFilter();
 
   const filters = [
-    { id: "الكل", label: "شركة مملوكة للدولة + جهة حكومية", value: "الكل" },
-    { id: "جهة حكومية", label: "جهة حكومية", value: "government" },
-    { id: "شركة مملوكة للدولة", label: "شركة مملوكة للدولة", value: "company" },
+    { id: "all", label: "الكل", value: "الكل" },
+    { id: "government", label: "جهة حكومية", value: "government" },
+    { id: "company", label: "شركة مملوكة للدولة + جهة حكومية", value: "company" },
   ];
 
   return (

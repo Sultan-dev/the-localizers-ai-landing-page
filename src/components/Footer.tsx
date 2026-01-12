@@ -79,7 +79,7 @@ const Footer = () => {
           </div>
           {/* Right: Copyright */}
           <p className="text-black/70 text-right md:text-left">
-            جميع الحقوق محفوظة © الشركة ذا لوكالايزيز الاستشارية
+            جميع الحقوق محفوظة © لشركة ذا لوكالايزرز الاستشارية
           </p>
         </div>
       </div>
