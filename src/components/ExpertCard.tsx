@@ -49,6 +49,20 @@ const ExpertCard = ({
     String(type).trim().toLowerCase() !== "null" &&
     String(type).trim().toLowerCase() !== "undefined";
 
+  // التحقق من وجود badge
+  const hasBadge =
+    badge !== null &&
+    badge !== undefined &&
+    badge !== "" &&
+    String(badge).trim() !== "";
+
+  // تحويل type إلى نص عربي
+  const getTypeLabel = (type: string) => {
+    if (type === "government") return "جهة حكومية";
+    if (type === "company") return "شركة مملوكة للدولة";
+    return "الكل";
+  };
+
   return (
     <div
       className={cn(
@@ -99,16 +113,14 @@ const ExpertCard = ({
             {title}
           </h3>
           <div className="flex gap-2 items-center">
+            {/* Show type chip only */}
             {hasType && (
               <span className="inline-block bg-[#a5d9c5]/30 text-gray-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap">
-                {type === "government"
-                  ? "جهة حكومية"
-                  : type === "company"
-                  ? "شركة مملوكة للدولة"
-                  : "شركة مملوكة للدولة + جهة حكومية"}
+                {getTypeLabel(type)}
               </span>
             )}
-            {badge && badge !== null && badge !== undefined && badge !== "" && (
+            {/* Show badge only if it's different from the type label */}
+            {hasBadge && (!hasType || badge !== getTypeLabel(type)) && (
               <span className="inline-block bg-[#a5d9c5]/30 text-gray-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap">
                 {badge}
               </span>
