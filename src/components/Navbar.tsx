@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 const Navbar = () => {
   const navLinks = [
     { label: "الخبراء", href: "#" },
-    { label: "ذا لوكا لايزرز", href: "https://thelocalizers.com/" },
+    { label: "  ذا لوكالايزرز ", href: "https://thelocalizers.com/" },
     { label: "اتصل بنا", href: "#contact" },
     { label: "قيم المنصة", href: "#" },
   ];
