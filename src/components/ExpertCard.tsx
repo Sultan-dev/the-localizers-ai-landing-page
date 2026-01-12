@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import soonImage from "@/assets/soon.jpeg";
+import soonImage from "@/assets/soon.png";
 
 interface ExpertCardProps {
   title: string;
