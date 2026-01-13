@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import soonImage from "@/assets/soon.png";
+import { normalizeStorageUrl } from "@/lib/storage";
 
 interface ExpertCardProps {
   title: string;
@@ -33,12 +34,8 @@ const ExpertCard = ({
   const hasOtherExperts = otherExperts.length > 0;
   const items = hasMechanisms ? mechanisms : otherExperts;
 
-  // التحقق من وجود صورة
-  const hasPreview =
-    previewUrl !== null && previewUrl !== undefined && previewUrl !== "";
-
-  // استخدام الصورة الافتراضية إذا لم تكن هناك صورة
-  const imageUrl = hasPreview ? previewUrl : soonImage;
+  // Normalize preview URL to absolute storage path
+  const imageUrl = normalizeStorageUrl(previewUrl, soonImage);
 
   // التحقق من وجود type
   const hasType =
