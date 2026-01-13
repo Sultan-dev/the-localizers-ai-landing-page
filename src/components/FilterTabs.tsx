@@ -7,7 +7,7 @@ const FilterTabs = () => {
   const filters = [
     { id: "all", label: "الكل", value: "الكل" },
     { id: "government", label: "جهة حكومية", value: "government" },
-    { id: "company", label: "شركة مملوكة للدولة + جهة حكومية", value: "company" },
+    { id: "company", label: "جهة مملوكة للدولة", value: "company" },
   ];
 
   return (

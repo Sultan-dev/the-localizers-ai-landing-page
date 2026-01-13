@@ -59,7 +59,7 @@ const ExpertCard = ({
   // تحويل type إلى نص عربي
   const getTypeLabel = (type: string) => {
     if (type === "government") return "جهة حكومية";
-    if (type === "company") return "شركة مملوكة للدولة";
+    if (type === "company") return "جهة مملوكة للدولة";
     return "الكل";
   };
 
